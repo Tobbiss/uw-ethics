@@ -1,0 +1,85 @@
+#!/bin/bash
+
+# Pull in the variables from the external file. This should define $FORM_VALUES and $METHOD.
+source "$(dirname "$0")/uw-ethics-vars"
+
+# Get the CSS file first
+CSS=`which gdoc2pdf | sed 's/bin\/gdoc2pdf/lib\/node_modules\/gdoc2pdf\/src\/styles\/no-h3\.css/'`
+CSS_HEADERS=`which gdoc2pdf | sed 's/bin\/gdoc2pdf/lib\/node_modules\/gdoc2pdf\/src\/styles\/with-highlights\.css/'`
+
+# Figure out where pwdiff is for our diffs
+PWDIFF="$(dirname "$0")/pwdiff"
+
+# Create a folder with the appropriate 
+FOLDER="$(date +'%Y-%m-%d-%Hh%M')"
+mkdir $FOLDER
+
+echo 'Form values'
+
+gdoc2pdf -f $FORM_VALUES -v none -o "$FOLDER/0-formvals.md"
+
+# If old file exists, use the diff for the PDF generation
+if [ -f "$1/0-formvals.md" ]; then
+    $PWDIFF "$1/0-formvals.md" "$FOLDER/0-formvals.md" > "$FOLDER/0-formvals-final.md"
+else
+    cp "$FOLDER/0-formvals.md" "$FOLDER/0-formvals-final.md"
+fi
+npx md-to-pdf --stylesheet $CSS "$FOLDER/0-formvals-final.md"
+
+echo 'Method'
+
+TEMPLATE='https://docs.google.com/document/d/1R0_xQvjYrq384j0ur_1CNCEQvOPBQTCxM4Gq_XWd4iY/edit'
+gdoc2pdf -f $METHOD -t $TEMPLATE -o "$FOLDER/1-method.md"
+
+if [ -f "$1/1-method.md" ]; then
+    $PWDIFF "$1/1-method.md" "$FOLDER/1-method.md" > "$FOLDER/1-method-final.md"
+else
+    cp "$FOLDER/1-method.md" "$FOLDER/1-method-final.md"
+fi
+npx md-to-pdf --stylesheet ${CSS_HEADERS} "$FOLDER/1-method-final.md"
+
+echo 'Consent form'
+
+CONSENT='https://docs.google.com/document/d/1EffPq6GcAEmVJo29hvets215AY3NDxFcM8OahDiTwjk/edit'
+gdoc2pdf -f $CONSENT -v $FORM_VALUES -o "$FOLDER/2-consent.md" -c $CSS
+
+if [ -f "$1/2-consent.md" ]; then
+    $PWDIFF "$1/2-consent.md" "$FOLDER/2-consent.md" > "$FOLDER/2-consent-final.md"
+else
+    cp "$FOLDER/2-consent.md" "$FOLDER/2-consent-final.md"
+fi
+npx md-to-pdf --stylesheet $CSS "$FOLDER/2-consent-final.md"
+
+echo 'Recruitment text'
+
+RECRUIT='https://docs.google.com/document/d/1n45fYI1TSWuzMsQdnvw5j_R3MxF9e2JG_m44yYU1R_o/edit'
+gdoc2pdf -f $RECRUIT -v $FORM_VALUES -o "$FOLDER/3-recruit.md" -c $CSS
+
+if [ -f "$1/3-recruit.md" ]; then
+    $PWDIFF "$1/3-recruit.md" "$FOLDER/3-recruit.md" > "$FOLDER/3-recruit-final.md"
+else
+    cp "$FOLDER/3-recruit.md" "$FOLDER/3-recruit-final.md"
+fi
+npx md-to-pdf --stylesheet $CSS "$FOLDER/3-recruit-final.md"
+
+echo 'Feedback text'
+
+FEEDBACK='https://docs.google.com/document/d/1atErn8uSQ9JH-3T6JevJTOF4VwzSAmmIvVJfV6ucz4o/edit'
+gdoc2pdf -f $FEEDBACK -v $FORM_VALUES -o "$FOLDER/4-feedback.md" -c $CSS
+
+if [ -f "$1/4-feedback.md" ]; then
+    $PWDIFF "$1/4-feedback.md" "$FOLDER/4-feedback.md" > "$FOLDER/4-feedback-final.md"
+else
+    cp "$FOLDER/4-feedback.md" "$FOLDER/4-feedback-final.md"
+fi
+npx md-to-pdf --stylesheet $CSS "$FOLDER/4-feedback-final.md"
+
+echo 'Combine'
+
+cd $FOLDER
+if [ -f 'all.pdf' ]; then
+    echo 'Deleting old all.pdf...'
+    rm 'all.pdf'
+fi
+
+echo 'all.pdf' | npx pdfmerge-cli@latest -a

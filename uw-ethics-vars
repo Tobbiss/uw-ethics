@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Should be a copy of https://docs.google.com/document/d/1y4Gjx9cKh3-iXG3HsPghtEVKo4BujKWM166d1CoLIlw/edit
+FORM_VALUES='https://docs.google.com/document/d/1YCPN67yHKevrIcvQLTb39E5k2_F_zC0icoI3bVyY0-I/edit'
+
+# Should be a copy of https://docs.google.com/document/d/1R0_xQvjYrq384j0ur_1CNCEQvOPBQTCxM4Gq_XWd4iY/edit
+METHOD='https://docs.google.com/document/d/1jrmnzAUV1px01-xGAHDtVcnj5x-cCq4jYwUOumZJIZc/edit'
