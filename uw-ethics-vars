@@ -5,3 +5,8 @@ FORM_VALUES='https://docs.google.com/document/d/1YCPN67yHKevrIcvQLTb39E5k2_F_zC0
 
 # Should be a copy of https://docs.google.com/document/d/1R0_xQvjYrq384j0ur_1CNCEQvOPBQTCxM4Gq_XWd4iY/edit
 METHOD='https://docs.google.com/document/d/1jrmnzAUV1px01-xGAHDtVcnj5x-cCq4jYwUOumZJIZc/edit'
+
+# Should be the appropriate template for your specific type of study.
+# Below is the template for surveys.
+TEMPLATE='https://docs.google.com/document/d/1C_hEbezrXjH61pkuU-aScdbujMagSlw1PU7B8kKybyI/edit'
+

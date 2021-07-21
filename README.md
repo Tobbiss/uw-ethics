@@ -18,7 +18,7 @@ Most parts of the ethics application are standardized in [this Google Drive fold
 In particular, the `Recruitment Text`, `Feedback Text`, and `Consent Form` is identical for every study. That leaves two documents you need to create for your study.
 
 -   The `FORM_VALUES` doc should be a copy of [https://docs.google.com/document/d/1y4Gjx9cKh3-iXG3HsPghtEVKo4BujKWM166d1CoLIlw/edit](https://docs.google.com/document/d/1y4Gjx9cKh3-iXG3HsPghtEVKo4BujKWM166d1CoLIlw/edit)
--   The `METHOD` doc should be a copy of [https://docs.google.com/document/d/1R0_xQvjYrq384j0ur_1CNCEQvOPBQTCxM4Gq_XWd4iY/edit](https://docs.google.com/document/d/1R0_xQvjYrq384j0ur_1CNCEQvOPBQTCxM4Gq_XWd4iY/edit)
+-   The `METHOD` doc should be a copy of the corresponding method doc for your experiment type.
 -   For instructions on how to modify the `FORM_VALUES`, refer to the
     `gdoc2pdf` README: https://github.com/gzinck/gdoc2pdf#adding-in-variables
 
@@ -41,7 +41,7 @@ source $FILE
 
 ### Specifying Google Doc links
 
-As previously mentioned, most Google Doc links do not need changes because they are standardized. However, you need to change the links to `FORM_VALUES` and `METHOD` files in the `uw-ethics-vars` file to the appropriate links.
+As previously mentioned, most Google Doc links do not need changes because they are standardized. However, you need to change the links to `FORM_VALUES`, `METHOD`, and `TEMPLATE` files in the `uw-ethics-vars` file to the appropriate links. Note that the `TEMPLATE` file is the method template for your experiment type.
 
 None of the other files need to be edited.
 

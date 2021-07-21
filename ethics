@@ -28,7 +28,6 @@ npx md-to-pdf --stylesheet $CSS "$FOLDER/0-formvals-final.md"
 
 echo 'Method'
 
-TEMPLATE='https://docs.google.com/document/d/1R0_xQvjYrq384j0ur_1CNCEQvOPBQTCxM4Gq_XWd4iY/edit'
 gdoc2pdf -f $METHOD -t $TEMPLATE -o "$FOLDER/1-method.md"
 
 if [ -f "$1/1-method.md" ]; then
