@@ -57,6 +57,18 @@ ethics
 
 This will generate a folder, named based on the date and time, with your ethics documents. `all.pdf` is the combined file.
 
+Note that if you want to show header 3s in your document, go into the script and change:
+```
+npx md-to-pdf --stylesheet $CSS "$FOLDER/1-method-final.md"
+```
+
+into:
+```
+npx md-to-pdf --stylesheet ${CSS_HEADERS} "$FOLDER/1-method-final.md"
+```
+
+Header 3s are used as comments by default.
+
 ### Updated application
 
 To show the diff between the original application and the new revisions, you can use the following:

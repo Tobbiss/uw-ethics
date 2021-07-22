@@ -35,7 +35,7 @@ if [ -f "$1/1-method.md" ]; then
 else
     cp "$FOLDER/1-method.md" "$FOLDER/1-method-final.md"
 fi
-npx md-to-pdf --stylesheet ${CSS_HEADERS} "$FOLDER/1-method-final.md"
+npx md-to-pdf --stylesheet $CSS "$FOLDER/1-method-final.md"
 
 echo 'Consent form'
 
