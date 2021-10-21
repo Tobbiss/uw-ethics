@@ -1,8 +1,9 @@
 # UW Ethics
 
 This automatically generates ethics documents for the University of Waterloo's ethics board.
-Note that the script supports macOS and Linux, but not Windows. Pull requests to support Windows are welcome.
+Note that the ethics, ethics-consent, and pwdiff scripts support macOS and Linux, but not Windows.
 
+For Windows users, please run the windows-ethics.ps1 and windows-ethics-consent.ps1 scripts on PowerShell. Pull requests to support pwdiff are welcome.
 ## Setup
 
 ### Installing dependencies
@@ -39,6 +40,13 @@ echo "export PATH=\"$PWD:\$PATH\"" >> $FILE
 source $FILE
 ```
 
+For Windows users:
+* Add this git repo to your path variable using the instructions here: https://www.java.com/en/download/help/path.html
+
+* Ensure that you have Java installed: https://www.java.com/en/download/manual.jsp
+
+* Install md-to-pdf using: `npm install md-to-pdf`
+
 ### Specifying Google Doc links
 
 As previously mentioned, most Google Doc links do not need changes because they are standardized. However, you need to change the links to `FORM_VALUES`, `METHOD`, and `TEMPLATE` files in the `uw-ethics-vars` file to the appropriate links. Note that the `TEMPLATE` file is the method template for your experiment type.
@@ -53,6 +61,11 @@ First, go into the folder in which you want to generate the ethics forms. Then r
 
 ```sh
 ethics
+```
+
+For Windows users, run:
+```
+& .\windows-ethics.ps1
 ```
 
 This will generate a folder, named based on the date and time, with your ethics documents. `all.pdf` is the combined file.
@@ -71,7 +84,7 @@ Header 3s are used as comments by default.
 
 ### Updated application
 
-To show the diff between the original application and the new revisions, you can use the following:
+To show the diff between the original application and the new revisions, you can use the following (not supported on Windows yet):
 
 ```sh
 ethics ./{{PATH_TO_PREVIOUS_APPLICATION_FOLDER}}/ # replace this folder with the folder with your original application
@@ -85,6 +98,11 @@ To generate the consent form, go to a folder and run:
 
 ```
 ethics-consent
+```
+
+For Windows users, run this instead:
+```
+& .\windows-ethics-consent.ps1
 ```
 
 This will generate the consent form only with no highlighting.
