@@ -3,7 +3,7 @@
 This automatically generates ethics documents for the University of Waterloo's ethics board.
 Note that the ethics, ethics-consent, and pwdiff scripts support macOS and Linux, but not Windows.
 
-For Windows users, please use the windows-ethics.ps1 and windows-ethics-consent.ps1 script. Pull requests to support pwdiff are welcome.
+For Windows users, please run the windows-ethics.ps1 and windows-ethics-consent.ps1 scripts on PowerShell. Pull requests to support pwdiff are welcome.
 ## Setup
 
 ### Installing dependencies
