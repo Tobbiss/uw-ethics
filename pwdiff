@@ -14,7 +14,7 @@ context_lines=65535 # Set to be very large to include whole document as output.
 DIFF=`git diff -U${context_lines}  --no-index --word-diff -- ${oldfile} ${newfile} |\
     tail +6  |\
     sed 's/\[-/<del>/g;s/-]/<\/del>/g;' |\
-    sed 's/{\+/<span class="inserted-text">/g;s/\+}/<\/span>/g;' |\
+    sed 's/{+/<span class="inserted-text">/g;s/+}/<\/span>/g;' |\
     sed -r 's/(<span[^>]*>)(#+ |- )/\2\1/g'` # Move spans after head/bullet
 
 if [ -z "$DIFF" ]; then
