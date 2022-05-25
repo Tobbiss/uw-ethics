@@ -11,11 +11,17 @@ cat $2 | sed 's/<span[^>]*>//g' | sed 's/<\/span>//g' | sed -r 's/<\/?[ib]>//g' 
 
 context_lines=65535 # Set to be very large to include whole document as output.
 
+# Select the SED option for advanced regex. Could be -r or -E.
+SED_OPTION=( -r )
+if ! echo '<span className="test"># Test' | sed $SED_OPTION 's/(<span[^>]*>)(#+ |- )/\2\1/g' > /dev/null 2>&1; then
+    SED_OPTION=( -E )
+fi
+
 DIFF=`git diff -U${context_lines}  --no-index --word-diff -- ${oldfile} ${newfile} |\
     tail +6  |\
     sed 's/\[-/<del>/g;s/-]/<\/del>/g;' |\
     sed 's/{+/<span class="inserted-text">/g;s/+}/<\/span>/g;' |\
-    sed -r 's/(<span[^>]*>)(#+ |- )/\2\1/g'` # Move spans after head/bullet
+    sed $SED_OPTION 's/(<span[^>]*>)(#+ |- )/\2\1/g'` # Move spans after head/bullet
 
 if [ -z "$DIFF" ]; then
     cat $newfile
