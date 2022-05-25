@@ -7,8 +7,9 @@ CONVERSION_OPTIONS=()
 # FIX FOR M1 MACS:
 # If you are running on an M1 Mac, you may need to specify the Chromium executable
 # in order to convert markdown files to PDF.
-# IF you are not on an M1 mac, you do not need to do this.
-# CONVERSION_OPTIONS=( --launch-options '{"executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"}' )
+if [[ $(uname -m) == 'arm64' ]]; then
+    CONVERSION_OPTIONS=( --launch-options '{"executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"}' )
+fi
 
 # Get the CSS file first
 CSS=`which gdoc2pdf | sed 's/bin\/gdoc2pdf/lib\/node_modules\/gdoc2pdf\/src\/styles\/no-h3\.css/'`

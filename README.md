@@ -5,7 +5,7 @@ Note that the ethics, ethics-consent, and pwdiff scripts support macOS and Linux
 
 For Windows users, please run the windows-ethics.ps1 and windows-ethics-consent.ps1 scripts on PowerShell. Pull requests to support pwdiff are welcome.
 
-For M1 Macs, make sure you are using Node 15 or 16 (not Node 17, as on Oct 2021 it has a number of bugs) and uncomment a line in the ./ethics script (line 11) to use Google Chrome for your rendering (puppeteer uses headless Chromium that does not support M1). You need Google Chrome installed for this to work.
+For M1 Macs, make sure you are using Node 15 or 16 (not Node 17, as on Oct 2021 it has a number of bugs). Note that there is a line in the ./ethics script (line 11) to use Google Chrome for your rendering (puppeteer uses headless Chromium that does not support M1). You need Google Chrome installed for this to work.
 
 ## Setup
 
