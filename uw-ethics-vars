@@ -10,3 +10,7 @@ METHOD='https://docs.google.com/document/d/1jrmnzAUV1px01-xGAHDtVcnj5x-cCq4jYwUO
 # Below is the template for surveys.
 TEMPLATE='https://docs.google.com/document/d/1C_hEbezrXjH61pkuU-aScdbujMagSlw1PU7B8kKybyI/edit'
 
+# If you have additional files (questionnaires, etc) to append to the generated PDF, specify the full path to the file here.
+# If multiple files, specify the full path to the directory containing the files you want to append.
+# Only works for PDF files!
+ADDITIONAL_FILES="/Users/johannwentzel/Desktop/PDFs"

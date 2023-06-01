@@ -81,6 +81,51 @@ else
 fi
 npx md-to-pdf --stylesheet $CSS "${CONVERSION_OPTIONS[@]}" "$FOLDER/4-feedback-final.md"
 
+if [ "$ADDITIONAL_FILES" != "CHANGEME" ]; then
+    echo 'Appending file(s) at path' $ADDITIONAL_FILES
+
+    # If the filepath specified exists...
+    if [ -e "$ADDITIONAL_FILES" ]; then
+        # If it's a directory...
+        if [ -d "$ADDITIONAL_FILES" ]; then
+            echo "Path is a folder, appending PDFs inside."
+
+            # Save old working directory
+            OLDWD=$PWD
+            cd "$ADDITIONAL_FILES"
+            
+            # Add all PDFs in the directory to the working folder
+            COUNT=0
+            for FILE in *; do 
+                if [ $(head -c 4 "$FILE") = "%PDF" ]; then
+                    echo "Appending" $FILE
+                    cp -f "$FILE" "$OLDWD/$FOLDER/$(($COUNT+5))-additional-file-$COUNT.pdf"
+                    let "COUNT += 1"
+                fi
+            done
+            cd $OLDWD
+        
+        #If it's a single PDF...
+        elif [ $(head -c 4 "$ADDITIONAL_FILES") = "%PDF" ]; then
+            echo "File at path is a PDF. Appending."
+            cp "$ADDITIONAL_FILES" "$FOLDER/5-additional-file.pdf"
+
+        # If it's not a PDF...
+        else
+            ERROR_RED='\033[0;31m'
+            NC='\033[0m' # No Color
+            echo -e "${ERROR_RED}File at path is not a PDF. Not appending.${NC}"
+        fi
+    
+    # Bad filepath
+    else
+        ERROR_RED='\033[0;31m'
+        NC='\033[0m' # No Color
+        echo -e "${ERROR_RED}Nothing at path exists. Check your ADDITIONAL_FILES variable.${NC}"
+    fi
+    
+fi
+
 echo 'Combine'
 
 cd $FOLDER
