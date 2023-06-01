@@ -19,7 +19,7 @@ CSS_HEADERS=`which gdoc2pdf | sed 's/bin\/gdoc2pdf/lib\/node_modules\/gdoc2pdf\/
 PWDIFF="$(dirname "$0")/pwdiff"
 
 # Create a folder with the appropriate 
-FOLDER="$(date +'%Y-%m-%d-%Hh%M')"
+FOLDER="output-$(date +'%Y-%m-%d-%Hh%M')"
 mkdir $FOLDER
 
 echo 'Form values'
