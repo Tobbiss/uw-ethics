@@ -13,4 +13,4 @@ TEMPLATE='https://docs.google.com/document/d/1C_hEbezrXjH61pkuU-aScdbujMagSlw1PU
 # If you have additional files (questionnaires, etc) to append to the generated PDF, specify the full path to the file here.
 # If multiple files, specify the full path to the directory containing the files you want to append.
 # Only works for PDF files!
-ADDITIONAL_FILES="/Users/johannwentzel/Desktop/PDFs"
+ADDITIONAL_FILES="CHANGEME"
