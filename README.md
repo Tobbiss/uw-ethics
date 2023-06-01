@@ -56,6 +56,8 @@ For Windows users:
 
 As previously mentioned, most Google Doc links do not need changes because they are standardized. However, you need to change the links to `FORM_VALUES`, `METHOD`, and `TEMPLATE` files in the `uw-ethics-vars` file to the appropriate links. Note that the `TEMPLATE` file is the method template for your experiment type.
 
+(CURRENTLY MAC ONLY) The `ADDITIONAL_FILES` variable is an absolute path to a PDF file (or directory of PDFs) which you want to append to the generated ethics application, like questionnaires, additional interview scripts, etc. If you change the default value from `CHANGEME` to a filepath or directory, it'll grab any PDFs at that path and add it to the end of the final generated PDF file. Example: `"/Users/johannwentzel/Desktop/PDFs"` or `"/Users/johannwentzel/Desktop/pre-questionnaire.pdf"`. 
+
 None of the other files need to be edited.
 
 ## Usage
