@@ -25,6 +25,7 @@ In particular, the `Recruitment Text`, `Feedback Text`, and `Consent Form` is id
 
 -   The `FORM_VALUES` doc should be a copy of [https://docs.google.com/document/d/1y4Gjx9cKh3-iXG3HsPghtEVKo4BujKWM166d1CoLIlw/edit](https://docs.google.com/document/d/1y4Gjx9cKh3-iXG3HsPghtEVKo4BujKWM166d1CoLIlw/edit)
 -   The `METHOD` doc should be a copy of the corresponding method doc for your experiment type.
+-   (MAC ONLY) If you have any other PDF files to add to the end of the generated PDF, change the `ADDITIONAL_FILES` variable to the path to the file or directory. 
 -   For instructions on how to modify the `FORM_VALUES`, refer to the
     `gdoc2pdf` README: https://github.com/gzinck/gdoc2pdf#adding-in-variables
 
@@ -56,7 +57,7 @@ For Windows users:
 
 As previously mentioned, most Google Doc links do not need changes because they are standardized. However, you need to change the links to `FORM_VALUES`, `METHOD`, and `TEMPLATE` files in the `uw-ethics-vars` file to the appropriate links. Note that the `TEMPLATE` file is the method template for your experiment type.
 
-(CURRENTLY MAC ONLY) The `ADDITIONAL_FILES` variable is an absolute path to a PDF file (or directory of PDFs) which you want to append to the generated ethics application, like questionnaires, additional interview scripts, etc. If you change the default value from `CHANGEME` to a filepath or directory, it'll grab any PDFs at that path and add it to the end of the final generated PDF file. Example: `"/Users/johannwentzel/Desktop/PDFs"` or `"/Users/johannwentzel/Desktop/pre-questionnaire.pdf"`. 
+(CURRENTLY MAC ONLY) The `ADDITIONAL_FILES` variable is an absolute path to a PDF file (or directory of PDFs) which you want to append to the generated ethics application, like questionnaires, additional interview scripts, etc. If you change the default value from `CHANGEME` to a filepath or directory, it'll grab any PDFs at that path and add it to the end of the final generated PDF file. Example: `"/Users/johannwentzel/Desktop/PDFs"` or `"/Users/johannwentzel/Desktop/pre-questionnaire.pdf"`.
 
 None of the other files need to be edited.
 
