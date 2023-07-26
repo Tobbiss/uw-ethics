@@ -18,8 +18,13 @@ CSS_HEADERS=`which gdoc2pdf | sed 's/bin\/gdoc2pdf/lib\/node_modules\/gdoc2pdf\/
 # Figure out where pwdiff is for our diffs
 PWDIFF="$(dirname "$0")/pwdiff"
 
-# Create a folder with the appropriate 
-FOLDER="output-$(date +'%Y-%m-%d-%Hh%M')"
+PROJTEXT= ""
+
+if [ "$PROJECT_NAME" != "" ]; then
+    PROJTEXT="$PROJECT_NAME-"
+fi
+# Create a folder with (optional) project name and date.
+FOLDER="output-$PROJTEXT$(date +'%Y-%m-%d-%Hh%M')"
 mkdir $FOLDER
 
 echo 'Form values'
